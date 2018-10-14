@@ -1,0 +1,8 @@
+{
+  "name": "trocapp-frontend",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "34d85d1d"
+}
