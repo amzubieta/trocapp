@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Mensajes recibidos
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+<ion-list>
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="assets/imgs/logo.png">
+    </ion-avatar>
+    <h2>Finn</h2>
+    <h3>Don't Know What To Do!</h3>
+    <p>I've had a pretty messed up day. If we just...</p>
+  </ion-item>
+</ion-list>
+
+<!-- TODO - Remove me adding link foreach chat -->
+<ion-fab bottom right>
+  <button ion-fab color="primary" (click)="showMessageDetail()">
+    <ion-icon name="cloud-upload"></ion-icon>
+  </button>
+</ion-fab>
+</ion-content>

@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 
-import { HomePage } from '../home/home';
+import { SearchPage } from '../search/search';
+import { MessagesPage } from '../messages/messages';
 import { ProductImagePage } from '../product-image/product-image';
-import { ContactPage } from '../contact/contact';
-import { AboutPage } from '../about/about';
+import { UserPage } from '../user/user';
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  searchRoot = HomePage;
-  chatRoot = ContactPage;
+  searchRoot = SearchPage;
+  messagesRoot = MessagesPage;
   productImageRoot = ProductImagePage;
-  profileRoot = AboutPage;
+  userRoot = UserPage;
 
   constructor() {
 
