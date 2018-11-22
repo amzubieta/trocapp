@@ -22,4 +22,7 @@ export class ChatPage {
     console.log('ionViewDidLoad ChatPage');
   }
 
+  goToMessages() {
+    this.navCtrl.popToRoot()
+  }
 }

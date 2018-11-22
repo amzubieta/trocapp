@@ -1,6 +1,20 @@
 page-product-image {
 	.image-container {
     min-height: 200px;
+		image-container-gap: 10px;
     background-size: cover;
   }
+
+	/*.image-container{
+		padding-top: 20px;
+	  display: grid;
+	  grid-template-columns: auto auto;
+	  grid-gap: 10px;
+	}*/
+
+	.image-container img{
+		width: 30%;
+	  height: 20px;
+	  margin: auto;
+	}
 }

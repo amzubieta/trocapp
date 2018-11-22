@@ -5,13 +5,13 @@
 </ion-header>
 
 <ion-content padding>
-  
+
   <h2>Imagenes</h2>
 
   <ion-grid>
     <ion-row>
       <ion-col col-6 col-md-4 col-xl-3 *ngFor="let image of [1,2,3,4,5]">
-        <div class="image-container" [style.background-image]="'url(assets/imgs/' + image + '.jpg)'"></div>
+        <div class="image-container"[style.background-image]="'url(assets/imgs/' + image + '.jpg)'"></div>
       </ion-col>
     </ion-row>
   </ion-grid>

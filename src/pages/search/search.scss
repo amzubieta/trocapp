@@ -1,3 +1,16 @@
 page-search {
 
 }
+
+.grid3{
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+}
+
+.grid3 img {
+  width: 50%;
+  height: 75px;
+  margin: auto;
+}
