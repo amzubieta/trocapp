@@ -22,4 +22,8 @@ export class UserPage {
     console.log('ionViewDidLoad UserPage');
   }
 
+  goTosearch() {
+    this.navCtrl.popToRoot()
+  }
+
 }

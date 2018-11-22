@@ -23,6 +23,7 @@ export class MessagesPage {
   }
 
   showMessageDetail() {
+    console.log('showMessageDetail!!!')
     this.navCtrl.push('ChatPage')
   }
 }

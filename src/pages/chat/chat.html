@@ -1,8 +1,23 @@
-<ion-content padding>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <h1>Finn</h1>
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only color="royal" class="btn-back" (click)="goToMessages()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
   <ion-list>
 
-    <img src="assets/imgs/logo.png">
+    <div class="grid1">
+      <img src="assets/imgs/logo.png">
+    </div>
 
     <ion-item>
       <ion-label>Su producto recibió una pregunta </ion-label>
@@ -21,11 +36,10 @@
     <ion-item>
       <ion-label floating>Su respuesta:</ion-label>
       <ion-input type="text"></ion-input>
+      <button ion-button outline item-end icon-start>
+        <ion-icon name="send"></ion-icon>
+      </button>
     </ion-item>
 
 </ion-list>
-
-<div padding>
-  <button ion-button small> Enviar </button>
-</div>
 </ion-content>

@@ -1,3 +1,18 @@
 page-chat {
+  .bar-buttons {
+    order: 1
+  }
+}
 
+.grid1{
+	padding-top: 20px;
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-gap: 10px;
+}
+
+.grid1 img {
+	width: 50%;
+	height: 100px;
+	margin: auto;
 }
