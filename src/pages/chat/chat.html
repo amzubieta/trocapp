@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      <h1>Finn</h1>
+      <h1>{{ product?.title }}</h1>
     </ion-title>
     <ion-buttons start>
       <button ion-button icon-only color="royal" class="btn-back" (click)="goToMessages()">
@@ -16,27 +16,28 @@
   <ion-list>
 
     <div class="grid1">
-      <img src="assets/imgs/logo.png">
+      <img src="{{ product?.images[0] }}">
     </div>
 
     <ion-item>
-      <ion-label>Su producto recibió una pregunta </ion-label>
+      <ion-label>Comentarios del producto</ion-label>
+      <hr>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngFor="let message of messages | async">
       <ion-avatar item-start>
-        <img src="assets/imgs/logo.png">
+        <img src="{{ message.user.photoURL }}">
       </ion-avatar>
-      <p>Don't Know What To Do!</p>
+      <p>{{ message.message }}</p>
       <ion-note>
-        Usuario, 11h ago
+        {{ message.user.name | slice:0:20  }}, {{ message.date }}
       </ion-note>
     </ion-item>
 
     <ion-item>
       <ion-label floating>Su respuesta:</ion-label>
-      <ion-input type="text"></ion-input>
-      <button ion-button outline item-end icon-start>
+      <ion-input type="text" autocomplete="off" [(ngModel)]="searchText"></ion-input>
+      <button ion-button outline item-end icon-start (click)="addMessage()">
         <ion-icon name="send"></ion-icon>
       </button>
     </ion-item>

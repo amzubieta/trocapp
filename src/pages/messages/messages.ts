@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the MessagesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Observable } from 'rxjs/Observable';
+
+import { UserProvider } from './../../providers/user/user';
+import { InterestProvider } from './../../providers/interest/interest';
 
 @IonicPage()
 @Component({
@@ -15,15 +13,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MessagesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public messagesView: string = "myInterests"
+
+  myInterests: Observable<any>
+  interestOnMyProducts: Observable<any>
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private userProvider: UserProvider,
+    private interestProvider: InterestProvider
+  ) {
+    let user = this.userProvider.get()
+
+    this.myInterests = this.interestProvider.getMyInterestRooms(user.uid)
+    this.interestOnMyProducts = this.interestProvider.getInterestsOnMyProducts(user.uid)
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MessagesPage')
-  }
-
-  showMessageDetail() {
-    console.log('showMessageDetail!!!')
-    this.navCtrl.push('ChatPage')
+  showMessageDetail(interest: any) {
+    this.navCtrl.push('ChatPage', { roomId: interest.key })
   }
 }

@@ -7,27 +7,44 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <form [formGroup]="form">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Titulo</ion-label>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.title.valid && (form.controls.title.dirty || form.controls.title.touched)" color="danger">
+        <div [hidden]="!form.controls.title.errors.required">
+          El campo es obligatorio
+        </div>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Titulo</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Descripción</ion-label>
+        <ion-input type="text" formControlName="description"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.description.valid && (form.controls.description.dirty || form.controls.description.touched)" color="danger">
+        <div [hidden]="!form.controls.description.errors.required">
+          El campo es obligatorio
+        </div>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Descripción</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+      <ion-item>
+        <ion-label floating>Me gustaría intercambiar por:</ion-label>
+        <ion-input type="text" formControlName="changePreferences"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!form.controls.changePreferences.valid && (form.controls.changePreferences.dirty || form.controls.changePreferences.touched)" color="danger">
+        <div [hidden]="!form.controls.changePreferences.errors.required">
+          El campo es obligatorio
+        </div>
+      </ion-item>
 
-    <ion-item>
-      <ion-label floating>Me gustaría intercambiar por:</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-
-  </ion-list>
-
-  <div padding>
-    <button ion-button small> Enviar </button>
-  </div>
-
+    </ion-list>
+  
+    <div padding>
+      <button ion-button block small type="submit" [disabled]="!form.valid" (click)="onSubmit()">Salvar</button>
+      <!-- <button ion-button small>Enviar</button> -->
+    </div>
+  
+  </form>
 </ion-content>

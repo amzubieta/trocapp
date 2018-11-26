@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detalle del producto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h2>{{ product.title }}</h2>
+  <ion-card>
+    <img src="{{ product.images[0] }}" (click)="showImageGallery()">
+
+    <ion-header></ion-header>
+    <ion-card-content><p>{{ product.description }}</p></ion-card-content>
+
+    <hr>
+    <ion-card-title>Cambiaria por:</ion-card-title>
+    <ion-card-content><h3></h3><p>{{ product.changePreferences }}</p></ion-card-content>
+  </ion-card>
+
+  <ion-fab bottom right>
+    <button ion-fab color="primary" (click)="contactProduct(product)">
+      <ion-icon name="chatbubbles"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
