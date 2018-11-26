@@ -1,36 +1,57 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Mensajes</ion-title>
-    <ion-buttons start>
-      <button ion-button icon-only color="royal" class="btn-back" (click)="goTosearch()">
-        <ion-icon name="arrow-back"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-toolbar>
-    <ion-segment>
-      <ion-segment-button value="new">
-        Recibidos
-      </ion-segment-button>
-      <ion-segment-button value="hot">
+    <ion-segment [(ngModel)]="messagesView">
+      <ion-segment-button value="myInterests">
         Enviados
+      </ion-segment-button>
+      <ion-segment-button value="receivedMessages">
+        Recibidos
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
 
-  <ion-list>
-          <button ion-item (click)="showMessageDetail()" icon-start>
-            <ion-avatar item-start>
-              <img src="assets/imgs/logo.png">
-            </ion-avatar>
-            <h2>Finn</h2>
-            <h3>Don't Know What To Do!</h3>
-            <p>I've had a pretty messed up day. If we just...</p>
-          </button>
-        </ion-list>
+  <div [ngSwitch]="messagesView">    
 
+    <ion-list *ngSwitchCase="'myInterests'">
+      <div *ngIf="myInterests?.length < 1">
+        <p>Usted no ha mostrado interesado por ningún producto.</p>
+      </div>
+
+      <div *ngFor="let interest of myInterests | async">
+        <button ion-item  (click)="showMessageDetail(interest)" icon-start>
+          <ion-avatar item-start>
+            <img src="{{ interest.product.images[0] }}">
+          </ion-avatar>
+          <h2>{{ interest.product.title }} </h2>
+          <h3>{{ interest.lastMessage }}</h3>
+          <p>{{ interest.date }}</p>
+        </button>
+      </div>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'receivedMessages'">
+      <div *ngIf="interestOnMyProducts?.length < 1">
+        <p>Nadie ha mostrado interesado por alguno de sus productos.</p>
+      </div>
+
+      <div *ngFor="let interest of interestOnMyProducts | async">
+        <button ion-item (click)="showMessageDetail(interest)" icon-start>
+         <ion-avatar item-start>
+           <img src="{{ interest.product.images[0] }}">
+         </ion-avatar>
+         <h2>{{ interest.product.title }} </h2>
+         <h3>{{ interest.lastMessage }}</h3>
+         <p>{{ interest.date }}</p>
+       </button>
+      </div>
+    </ion-list>
+    
+  </div>
 
 </ion-content>

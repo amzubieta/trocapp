@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the SearchPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { Observable } from 'rxjs/Observable';
+import { ProductProvider } from './../../providers/product/product';
 
 @IonicPage()
 @Component({
@@ -15,11 +11,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SearchPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  products: Observable<any>;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private productProvider: ProductProvider) {
+
+    this.products = this.productProvider.getAll();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
+  }
+
+  detailProduct(product: any) {
+    this.navCtrl.push('ProductDetailPage', { product: product });
   }
 
 }

@@ -4,58 +4,35 @@
 
 <ion-content padding>
 
-      <ion-item>
-        <h3>Adjust Display</h3>
-        <button ion-button outline item-end icon-start>
-          <ion-icon name="options"></ion-icon>
-        </button>
-      </ion-item>
-
+  <ion-item>
+    <h3>Resultados de su búsqueda</h3>
+    <button ion-button outline item-end icon-start>
+      <ion-icon name="options"></ion-icon>
+    </button>
+  </ion-item>
 
   <ion-grid>
     <ion-row>
 
-      <!-- ... -->
-      <ion-col col-md-6>
-        <ion-card>
+      <ion-col col-6 col-md-4 col-xl-3 *ngFor="let product of products | async">
+        <ion-card (click)="detailProduct(product)">
           <button ion-button icon-start clear small>
             <ion-icon name="eye"></ion-icon>
           </button>
           <div class="grid3">
-            <img src="../assets/imgs/logo.png"/>
+            <img src="{{ product.images[0] }}"/>
           </div>
           <ion-card-content>
             <ion-card-title>
-            Nombre
+            {{ product.title }}
               </ion-card-title>
             <p>
-              The most popular ...
+              {{ product.description | slice:0:20 }} ...
             </p>
           </ion-card-content>
         </ion-card>
       </ion-col>
-      <!-- ... -->
-      <ion-col col-md-6>
-        <ion-card>
-          <button ion-button icon-start clear small>
-            <ion-icon name="eye"></ion-icon>
-          </button>
-          <div class="grid3">
-            <img src="../assets/imgs/logo.png"/>
-          </div>
-
-          <ion-card-content>
-            <ion-card-title>
-              Nombre
-              </ion-card-title>
-            <p>
-              The most popular ...
-            </p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-      <!-- ... -->
-
+      
     </ion-row>
   </ion-grid>
 </ion-content>
